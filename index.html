@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KJD Productions | Professional Audio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gray: #F7F7F7;
+            --blush-hero: #EFE6DD;
+            --sage-contact: #AEC0AE;
+            --slate: #4A4A4A;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION - SLEEK, THIN LAYOUT */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 0.5rem 6%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        /* MUCH LARGER LOGO WITH TIGHT MARGINS */
+        .logo-image {
+            height: 275px; 
+            width: auto;
+            object-fit: contain;
+            mix-blend-mode: multiply; 
+            transition: transform 0.3s ease;
+            margin: -100px 0; 
+        }
+
+        .logo-link:hover .logo-image {
+            transform: scale(1.02);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--slate);
+            font-size: 0.9rem;
+            text-transform: capitalize;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: #8da38d; }
+
+        /* MAIN LAYOUT WRAPPERS */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 160px 5% 50px 5%;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--slate);
+        }
+
+        /* TOP SPLIT SECTION (HERO & SERVICES) */
+        .top-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 6rem;
+        }
+
+        .hero-panel {
+            background-color: var(--blush-hero);
+            padding: 5rem 3rem;
+            border-radius: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 140px; 
+        }
+
+        .hero-panel h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            color: #5b6d5b;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-panel p {
+            font-size: 1.2rem;
+            color: var(--slate);
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-content: start;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover { transform: translateY(-5px); }
+
+        .service-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: #333;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* WORKS SECTION */
+        #works {
+            margin-bottom: 6rem;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+        }
+
+        .work-item {
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .work-item img {
+            width: 100%;
+            aspect-ratio: 1/1; 
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+            background: #e0e0e0;
+            transition: transform 0.3s ease;
+        }
+
+        .work-item img:hover { transform: scale(1.02); }
+
+        .work-item strong {
+            display: block;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .role-tag {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.85rem;
+            color: #888;
+            letter-spacing: 0.5px;
+        }
+
+        /* CONTACT SECTION */
+        #contact {
+            display: flex;
+            justify-content: flex-end; 
+        }
+
+        .contact-box {
+            width: 100%;
+            max-width: 700px;
+            background: var(--sage-contact);
+            padding: 4rem;
+            border-radius: 20px;
+        }
+
+        .form-group { margin-bottom: 1.2rem; }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--white);
+            font-family: inherit;
+        }
+
+        button {
+            background: var(--slate);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        button:hover { background: #333; }
+
+        footer {
+            text-align: center;
+            padding: 40px 10%;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        @media (max-width: 960px) {
+            .top-split { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-panel { position: relative; top: 0; padding: 3rem 2rem; }
+            .services-container { grid-template-columns: 1fr; }
+            #contact { justify-content: center; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            nav { padding: 1rem 5%; }
+            .logo-image { height: 140px; margin: -40px 0; }
+            .main-container { padding-top: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#hero" class="logo-link">
+            <img src="KJDProductions_WHITE_LOGO.png" alt="KJD Productions" class="logo-image">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#works">Works</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <div class="top-split">
+            <section id="hero" class="hero-panel">
+                <h1>Warmth in Every Wave.</h1>
+                <p>a personalized experience for a unique YOU.</p>
+            </section>
+
+            <section id="services" class="services-panel">
+                <div class="services-container">
+                    <div class="service-card">
+                        <h3>Recording</h3>
+                        <p>Capturing the raw energy of music and the intimate nuance of spoken word with the comfort of a home studio.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Editing</h3>
+                        <p>Natural vocal tuning and timing corrections that preserve the soul of the performance.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Mixing</h3>
+                        <p>Bringing balance, depth, and emotion to your tracks. Making sure every element has its perfect place.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Mastering</h3>
+                        <p>The final touch. Consistency, loudness, and tonal balance optimized for all streaming platforms and physical media.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section id="works">
+            <h2>Works</h2>
+            <div class="works-grid">
+                
+                <a href="https://open.spotify.com/track/2oCcvfASJ81PNGNpdPOYwL?si=f2fc566e0b594d34" target="_blank" class="work-item">
+                    <img src="Ruby Layne & The Wicked Divine-Not Yours-Single.jpg" alt="Album Art">
+                    <strong>Not Yours</strong>
+                    <span class="role-tag">Recording Engineer, Mixing Engineer, Mastering Engineer, and Producer</span>
+                </a>
+
+                <a href="https://open.spotify.com/track/3BQt2GSMi24HgpQnmwwp39?si=91a2b27cb8254675" target="_blank" class="work-item">
+                    <img src="Masha and the Fam-Gold Guns Girls (feat. Athan Hilaki).jpg" alt="Album Art">
+                    <strong>Gold Guns Girls</strong>
+                    <span class="role-tag">Mastering Engineer</span>
+                </a>
+
+                <div class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+                    <strong>a Knack for Overthinking</strong>
+                    <span class="role-tag">Recording Engineer and Producer</span>
+                </div>
+                
+                <div class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+                    <strong>if you ever leave long island</strong>
+                    <span class="role-tag">Recording Engineer and Producer</span>
+                </div>
+                
+                <div class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+                    <strong>He's My Man</strong>
+                    <span class="role-tag">Recording Engineer-Drums</span>
+                </div>
+
+                <div class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+                    <strong>Queer American Dream</strong>
+                    <span class="role-tag">Recording Engineer-Vocals, Guitars, and Drums</span>
+                </div>
+
+                <div class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+                    <strong>HOWL (Protest Song)</strong>
+                    <span class="role-tag">Recording Engineer and Producer</span>
+                </div>
+
+                <div class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+                    <strong>Queer Love Outlaw</strong>
+                    <span class="role-tag">Recording Engineer-Drums</span>
+                </div>
+
+                <div class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+                    <strong>The Truth The Life The Way</strong>
+                    <span class="role-tag">Recording Engineer-Drums</span>
+                </div>
+
+                <div class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+                    <strong>Queers to the Front</strong>
+                    <span class="role-tag">Recording Engineer-Drums</span>
+                </div>
+    
+                <div class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+                    <strong>Burn the Cis-Tem</strong>
+                    <span class="role-tag">Recording Engineer-Drums</span>
+                </div>
+
+                <div class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+                    <strong>TFT</strong>
+                    <span class="role-tag">Recording Engineer-Drums</span>
+                </div>
+
+                <div class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+                    <strong>Straight Dudes Claiming They're Straight</strong>
+                    <span class="role-tag">Recording Engineer-Drums</span>
+                </div>
+
+                <div class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+                    <strong>Saturn Is Returning</strong>
+                    <span class="role-tag">Recording Engineer-Drums</span>
+                </div>
+
+                <div class="work-item">
+                    <img src="Ryan Cassata-Hold On, Hold On You Belong.jpg" alt="Album Art">
+                    <strong>HOLD ON YOU BELONG</strong>
+                    <span class="role-tag">Recording and Mix Engineer</span>
+                </div>
+
+                <div class="work-item">
+                    <img src="Ryan Cassata-WE MARCH (Stronger Together).jpg" alt="Album Art">
+                    <strong>WE MARCH (Stronger Together)</strong>
+                    <span class="role-tag">Recording Engineer-Drums</span>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="contact-box">
+                <h2>Contact</h2>
+                <form action="https://formspree.io/f/your@email.com" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="_replyto" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select name="service" required>
+                            <option value="" disabled selected>Select a Service...</option>
+                            <option value="Recording">Recording</option>
+                            <option value="Mixing">Mixing</option>
+                            <option value="Mastering">Mastering</option>
+                            <option value="Podcast">Podcast Editing</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="Message..." required></textarea>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 KJD Productions.
+    </footer>
+</body>
+</html>
