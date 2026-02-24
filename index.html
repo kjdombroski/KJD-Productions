@@ -477,5 +477,41 @@
     &copy; 2026 KJD Productions.
 </footer>
 
+<script>
+    document.querySelector('.logo-link').addEventListener('click', function(e) {
+        e.preventDefault(); // This stops the default CSS jump
+        
+        const targetElement = document.getElementById('start-screen');
+        // This calculates the exact distance to your perfect level spot
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 140; 
+        const startPosition = window.scrollY;
+        const distance = targetPosition - startPosition;
+        
+        const duration = 1500; // The total time in milliseconds (1.5 seconds)
+        let start = null;
+
+        // This is the math for "Ease Out Quint" - it starts fast, then severely slows down at the end
+        function easeOutQuint(t, b, c, d) {
+            t /= d;
+            t--;
+            return c*(t*t*t*t*t + 1) + b;
+        }
+
+        function animation(currentTime) {
+            if (start === null) start = currentTime;
+            const timeElapsed = currentTime - start;
+            
+            const run = easeOutQuint(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            }
+        }
+
+        requestAnimationFrame(animation);
+    });
+</script>
+
 </body>
 </html>
