@@ -38,6 +38,7 @@
             background-color: var(--bg-gray);
         }
 
+        /* NAVIGATION - SLEEK, THIN LAYOUT */
         nav {
             position: fixed;
             top: 0;
@@ -214,6 +215,7 @@
             letter-spacing: 0.5px;
         }
 
+        /* CONTACT FORM FIXES */
         #contact {
             display: flex;
             justify-content: center; 
@@ -237,6 +239,13 @@
             background: var(--white);
             font-family: inherit;
             font-size: 16px; 
+            outline: none; /* Removes blue outline on all inputs */
+        }
+
+        /* Removes blue outline specifically when clicking/focusing */
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(74, 74, 74, 0.1); /* Subtle gray shadow instead of harsh blue */
         }
 
         select {
