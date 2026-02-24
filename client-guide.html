@@ -22,6 +22,7 @@
             color: var(--slate);
         }
 
+        /* NAVIGATION - MATCHES MAIN PAGE EXACTLY */
         nav {
             position: fixed;
             top: 0;
@@ -36,16 +37,40 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
 
-        .logo-image { height: 275px; width: auto; object-fit: contain; mix-blend-mode: multiply; margin: -100px 0; }
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .logo-image { 
+            height: 275px; 
+            width: auto; 
+            object-fit: contain; 
+            mix-blend-mode: multiply; 
+            margin: -100px 0; 
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover .logo-image { transform: scale(1.02); }
 
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--slate); font-size: 1.2rem; font-weight: 600; text-transform: capitalize; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--slate); 
+            font-size: 1.2rem; 
+            font-weight: 600; 
+            text-transform: capitalize; 
+            transition: color 0.3s;
+        }
         .nav-links a:hover { color: #8da38d; }
 
+        /* MAIN CONTAINER - PADDING SET TO 160PX TO MATCH HOMEPAGE */
         .main-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 180px 5% 80px 5%;
+            padding: 160px 5% 80px 5%; 
         }
 
         .page-header {
@@ -127,6 +152,7 @@
             .workflow-arrow { display: none; }
             .page-header h1 { font-size: 2.5rem; }
             .workflow-strip { padding: 3rem 1.5rem; }
+            .main-container { padding-top: 120px; } /* Mobile offset match */
         }
     </style>
 </head>
