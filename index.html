@@ -171,12 +171,16 @@
         }
 
         .works-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 4rem;
+            display: flex;
+            gap: 2.5rem;
+            overflow-x: auto; /* Enables horizontal scrolling */
+            padding-bottom: 2rem; /* Breathing room for the scrollbar */
+            scroll-snap-type: x mandatory; /* Makes it snap smoothly to each album */
         }
 
         .work-item {
+            flex: 0 0 300px; /* Forces each album to stay 300px wide and not shrink */
+            scroll-snap-align: start; /* Tells the scroll where to snap */
             text-align: center;
             text-decoration: none;
             color: inherit;
