@@ -38,7 +38,6 @@
             background-color: var(--bg-gray);
         }
 
-        /* NAVIGATION - SLEEK, THIN LAYOUT */
         nav {
             position: fixed;
             top: 0;
@@ -61,7 +60,6 @@
             outline: none; 
         }
 
-        /* MUCH LARGER LOGO WITH TIGHT MARGINS */
         .logo-image {
             height: 275px; 
             width: auto;
@@ -92,7 +90,6 @@
 
         .nav-links a:hover { color: #8da38d; }
 
-        /* MAIN LAYOUT WRAPPERS */
         .main-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -106,7 +103,6 @@
             color: var(--slate);
         }
 
-        /* TOP SPLIT SECTION (HERO & SERVICES) */
         .top-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -170,7 +166,6 @@
             color: #666;
         }
        
-        /* WORKS SECTION */
         #works {
             margin-bottom: 6rem;
         }
@@ -219,7 +214,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* CONTACT SECTION */
         #contact {
             display: flex;
             justify-content: center; 
@@ -242,10 +236,9 @@
             border-radius: 8px;
             background: var(--white);
             font-family: inherit;
-            font-size: 16px; /* Prevents the aggressive iPhone auto-zoom! */
+            font-size: 16px; 
         }
 
-        /* Custom Dropdown Styling */
         select {
             -webkit-appearance: none;
             appearance: none;
@@ -254,7 +247,7 @@
             background-repeat: no-repeat;
             background-position: right 1.2rem center;
             background-size: 0.8rem auto;
-            padding-right: 3rem; /* Gives the text breathing room */
+            padding-right: 3rem; 
         }
 
         button {
@@ -296,14 +289,15 @@
 <body>
 
     <nav>
-        <a href="#start-screen" class="logo-link">
+        <a href="index.html" class="logo-link">
             <img src="KJDProductions_WHITE_LOGO.png" alt="KJD Productions" class="logo-image">
         </a>
         <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#works">Works</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#works">Works</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="client-guide.html">Guide</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -492,43 +486,34 @@
 
 <script>
     document.querySelector('.logo-link').addEventListener('click', function(e) {
-        e.preventDefault(); 
-        
-        // Temporarily disable CSS smooth scroll so JS can take over
-        document.documentElement.style.scrollBehavior = 'auto';
-        
-        const targetElement = document.getElementById('start-screen');
-        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 140; 
-        const startPosition = window.scrollY;
-        const distance = targetPosition - startPosition;
-        
-        // 1. LOWER DURATION: 800ms makes the whole interaction punchier
-        const duration = 800; 
-        let start = null;
+        if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
+            e.preventDefault(); 
+            document.documentElement.style.scrollBehavior = 'auto';
+            const targetElement = document.getElementById('start-screen');
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 140; 
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            const duration = 800; 
+            let start = null;
 
-        // 2. EXPONENTIAL MATH: The fastest possible start, with a smooth landing
-        function easeOutExpo(t, b, c, d) {
-            return (t === d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
-        }
-
-        function animation(currentTime) {
-            if (start === null) start = currentTime;
-            const timeElapsed = currentTime - start;
-            
-            const run = easeOutExpo(timeElapsed, startPosition, distance, duration);
-            window.scrollTo(0, run);
-            
-            if (timeElapsed < duration) {
-                requestAnimationFrame(animation);
-            } else {
-                 // Failsafe to ensure it lands on the exact pixel
-                window.scrollTo(0, targetPosition);
-                // Turn the CSS smooth scroll back on
-                document.documentElement.style.scrollBehavior = 'smooth';
+            function easeOutExpo(t, b, c, d) {
+                return (t === d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
             }
-        }
 
-        requestAnimationFrame(animation);
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const run = easeOutExpo(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                } else {
+                    window.scrollTo(0, targetPosition);
+                    document.documentElement.style.scrollBehavior = 'smooth';
+                }
+            }
+            requestAnimationFrame(animation);
+        }
     });
 </script>
 
