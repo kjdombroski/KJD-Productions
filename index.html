@@ -38,6 +38,7 @@
             background-color: var(--bg-gray);
         }
 
+        /* NAVIGATION - SLEEK, THIN LAYOUT */
         nav {
             position: fixed;
             top: 0;
@@ -60,6 +61,7 @@
             outline: none; 
         }
 
+        /* MUCH LARGER LOGO WITH TIGHT MARGINS */
         .logo-image {
             height: 275px; 
             width: auto;
@@ -90,6 +92,7 @@
 
         .nav-links a:hover { color: #8da38d; }
 
+        /* MAIN LAYOUT WRAPPERS */
         .main-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -103,6 +106,7 @@
             color: var(--slate);
         }
 
+        /* TOP SPLIT SECTION (HERO & SERVICES) */
         .top-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -166,6 +170,7 @@
             color: #666;
         }
        
+        /* WORKS SECTION */
         #works {
             margin-bottom: 6rem;
         }
@@ -214,6 +219,7 @@
             letter-spacing: 0.5px;
         }
 
+        /* CONTACT SECTION */
         #contact {
             display: flex;
             justify-content: center; 
@@ -240,6 +246,7 @@
             outline: none; 
         }
 
+        /* Removed blue outline specifically when clicking/focusing */
         input:focus, select:focus, textarea:focus {
             outline: none;
             box-shadow: 0 0 0 2px rgba(74, 74, 74, 0.1); 
@@ -491,6 +498,25 @@
 </footer>
 
 <script>
+    // 1. IMMEDIATE JUMP ON PAGE LOAD (FIX FOR GUIDE -> CONTACT)
+    if (window.location.hash) {
+        // Temporarily disable smooth scroll to allow an instant jump
+        document.documentElement.style.scrollBehavior = 'auto';
+        
+        const hash = window.location.hash;
+        const target = document.querySelector(hash);
+        if (target) {
+            const offsetPosition = target.getBoundingClientRect().top + window.scrollY - 140;
+            window.scrollTo(0, offsetPosition);
+        }
+        
+        // Re-enable smooth scroll for future on-page clicks
+        setTimeout(() => {
+            document.documentElement.style.scrollBehavior = 'smooth';
+        }, 10);
+    }
+
+    // 2. LOGO LINK SMART SCROLL
     document.querySelector('.logo-link').addEventListener('click', function(e) {
         if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
             e.preventDefault(); 
