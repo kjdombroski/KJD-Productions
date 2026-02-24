@@ -219,6 +219,53 @@
             letter-spacing: 0.5px;
         }
 
+        /* WORKFLOW / FIRST-TIME CLIENT STRIP */
+        .workflow-strip {
+            background-color: var(--blush-hero);
+            padding: 4rem 3rem;
+            margin-bottom: 6rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .workflow-strip h2 {
+            margin-bottom: 3rem;
+        }
+
+        .workflow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .workflow-step {
+            flex: 1;
+        }
+
+        .workflow-step h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            color: #5b6d5b;
+            margin-bottom: 0.8rem;
+        }
+
+        .workflow-step p {
+            font-size: 0.95rem;
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        .workflow-arrow {
+            font-size: 2rem;
+            color: var(--sage-contact);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+        }
+
         /* CONTACT SECTION */
         #contact {
             display: flex;
@@ -242,7 +289,7 @@
             border-radius: 8px;
             background: var(--white);
             font-family: inherit;
-            font-size: 16px; /* Prevents the aggressive iPhone auto-zoom! */
+            font-size: 16px; 
         }
 
         /* Custom Dropdown Styling */
@@ -254,7 +301,7 @@
             background-repeat: no-repeat;
             background-position: right 1.2rem center;
             background-size: 0.8rem auto;
-            padding-right: 3rem; /* Gives the text breathing room */
+            padding-right: 3rem; 
         }
 
         button {
@@ -290,6 +337,15 @@
             nav { padding: 1rem 5%; }
             .logo-image { height: 140px; margin: -40px 0; }
             .main-container { padding-top: 120px; }
+            
+            /* Workflow Mobile Stack */
+            .workflow-container {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+            .workflow-arrow {
+                display: none; /* Hides the horizontal arrows on mobile */
+            }
         }
     </style>
 </head>
@@ -442,6 +498,26 @@
                     <span class="role-tag">Recording Engineer-Drums</span>
                 </a>
 
+            </div>
+        </section>
+
+        <section id="workflow" class="workflow-strip">
+            <h2>First Time Here?</h2>
+            <div class="workflow-container">
+                <div class="workflow-step">
+                    <h4>1. Prep & Send</h4>
+                    <p>Send over your 24-bit WAV stems securely.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <h4>2. Mix & Review</h4>
+                    <p>Listen and collaborate seamlessly via Samply.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <h4>3. Finalize & Deliver</h4>
+                    <p>Approve the final mix and download your high-res masters.</p>
+                </div>
             </div>
         </section>
        
