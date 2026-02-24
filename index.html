@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta property="og:title" content="KJD Productions | Professional Audio Engineering">
-    <meta property="og:description" content="Based in Los Angeles, I specialize in high-fidelity recording and mixing. Let's make your next release your best one.">
-    <meta property="og:image" content="https://kjdproductions.com/KJDProductions_Site_LOGO_nowatermark.png">
-    <meta property="og:url" content="https://kjdproductions.com">
-    <meta property="og:type" content="website">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="KJD Productions | Professional Audio Engineering">
-    <meta name="twitter:description" content="Professional mixing and recording services based in Los Angeles.">
-    <meta name="twitter:image" content="https://kjdproductions.com/KJDProductions_Site_LOGO_nowatermark.png">
-    <title>KJD Productions | Professional Audio</title>
+    <meta charset="UTF-8">
+    <title>Client Guide | KJD Productions</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -29,16 +20,16 @@
         }
 
         html {
-            scroll-padding-top: 130px; 
             scroll-behavior: smooth; 
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-gray);
+            color: var(--slate);
         }
 
-        /* NAVIGATION - SLEEK, THIN LAYOUT */
+        /* NAVIGATION */
         nav {
             position: fixed;
             top: 0;
@@ -61,7 +52,6 @@
             outline: none; 
         }
 
-        /* MUCH LARGER LOGO WITH TIGHT MARGINS */
         .logo-image {
             height: 275px; 
             width: auto;
@@ -92,184 +82,83 @@
 
         .nav-links a:hover { color: #8da38d; }
 
-        /* MAIN LAYOUT WRAPPERS */
-        .main-container {
+        /* PAGE HEADER */
+        .page-header {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 160px 5% 50px 5%;
+            padding: 180px 5% 40px 5%;
+            text-align: center;
         }
 
-        h2 {
+        .page-header h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            color: #5b6d5b;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* WORKFLOW STRIP STYLING */
+        .workflow-wrapper {
+            max-width: 1200px;
+            margin: 0 auto 6rem auto;
+            padding: 0 5%;
+        }
+
+        .workflow-strip {
+            padding: 4rem 4rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            margin-bottom: 3rem;
+        }
+
+        .bg-blush { background-color: var(--blush-hero); }
+        .bg-white { background-color: var(--white); }
+
+        .workflow-strip h2 {
             font-family: 'Crimson Pro', serif;
             font-size: 2.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             color: var(--slate);
         }
 
-        /* TOP SPLIT SECTION (HERO & SERVICES) */
-        .top-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 6rem;
+        .workflow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
         }
 
-       #start-screen {
-            scroll-margin-top: 144px; 
+        .workflow-step {
+            flex: 1;
+            text-align: center;
         }
 
-        .hero-panel {
-            background-color: var(--blush-hero);
-            padding: 5rem 3rem;
-            border-radius: 20px;
-            height: fit-content;
-            position: sticky;
-            top: 140px; 
-            scroll-margin-top: 140px; 
-        }
-
-        .hero-panel h1 {
-            font-family: 'Crimson Pro', serif;
-            font-size: clamp(3rem, 5vw, 4.5rem);
-            color: #5b6d5b;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-
-        .hero-panel p {
-            font-size: 1.2rem;
-            color: var(--slate);
-        }
-
-        .services-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            align-content: start;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 2.5rem 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover { transform: translateY(-5px); }
-
-        .service-card h3 {
+        .workflow-step h4 {
             font-family: 'Crimson Pro', serif;
             font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            color: #333;
+            color: #5b6d5b;
+            margin-bottom: 1rem;
         }
 
-        .service-card p {
-            font-size: 0.9rem;
-            color: #666;
-        }
-       
-        /* WORKS SECTION */
-        #works {
-            margin-bottom: 6rem;
+        .workflow-step p {
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        .works-grid {
-            display: flex;
-            gap: 2.5rem;
-            overflow-x: auto; 
-            padding-bottom: 2rem; 
-            scroll-snap-type: x mandatory; 
+        .workflow-arrow {
+            font-size: 2rem;
+            color: var(--sage-contact);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            padding-top: 1.5rem; /* Aligns arrow with the text */
         }
-
-        .work-item {
-            flex: 0 0 300px; 
-            scroll-snap-align: start; 
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .work-item img {
-            width: 100%;
-            aspect-ratio: 1/1; 
-            border-radius: 12px;
-            object-fit: cover;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-            background: #e0e0e0;
-            transition: transform 0.3s ease;
-        }
-
-        .work-item img:hover { transform: scale(1.02); }
-
-        .work-item strong {
-            display: block;
-            margin-top: 1.5rem;
-            font-size: 1.2rem;
-            font-family: 'Crimson Pro', serif;
-        }
-
-        .role-tag {
-            display: block;
-            margin-top: 5px;
-            font-size: 0.85rem;
-            color: #888;
-            letter-spacing: 0.5px;
-        }
-
-        /* CONTACT SECTION */
-        #contact {
-            display: flex;
-            justify-content: center; 
-        }
-
-        .contact-box {
-            width: 100%;
-            max-width: 700px;
-            background: var(--sage-contact);
-            padding: 4rem;
-            border-radius: 20px;
-        }
-
-        .form-group { margin-bottom: 1.2rem; }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 1.2rem;
-            border: none;
-            border-radius: 8px;
-            background: var(--white);
-            font-family: inherit;
-            font-size: 16px; /* Prevents the aggressive iPhone auto-zoom! */
-        }
-
-        /* Custom Dropdown Styling */
-        select {
-            -webkit-appearance: none;
-            appearance: none;
-            cursor: pointer;
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%234A4A4A%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1.2rem center;
-            background-size: 0.8rem auto;
-            padding-right: 3rem; 
-        }
-
-        button {
-            background: var(--slate);
-            color: white;
-            padding: 1.2rem 3rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s;
-            margin-top: 1rem;
-        }
-
-        button:hover { background: #333; }
 
         footer {
             text-align: center;
@@ -279,258 +168,133 @@
         }
 
         @media (max-width: 960px) {
-            .top-split { grid-template-columns: 1fr; gap: 2rem; }
-            .hero-panel { position: relative; top: 0; padding: 3rem 2rem; }
-            .services-container { grid-template-columns: 1fr; }
-            #contact { justify-content: center; }
+            .workflow-strip { padding: 3rem 2rem; }
         }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
             nav { padding: 1rem 5%; }
             .logo-image { height: 140px; margin: -40px 0; }
-            .main-container { padding-top: 120px; }
+            .page-header { padding-top: 140px; }
+            
+            .workflow-container {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+            .workflow-arrow {
+                display: none; 
+            }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#start-screen" class="logo-link">
+        <a href="index.html" class="logo-link">
             <img src="KJDProductions_WHITE_LOGO.png" alt="KJD Productions" class="logo-image">
         </a>
         <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#works">Works</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html#start-screen">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#works">Works</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="guide.html">Client Guide</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <div class="main-container">
-        <div class="top-split" id="start-screen">
-            <section id="hero" class="hero-panel">
-                <h1>Warmth in Every Wave.</h1>
-                <p>a personalized experience for a unique YOU.</p>
-            </section>
+    <div class="page-header">
+        <h1>How We Work</h1>
+        <p>A quick breakdown of the workflow from the first file transfer to the final master.</p>
+    </div>
 
-            <section id="services" class="services-panel">
-                <div class="services-container">
-                    <div class="service-card">
-                        <h3>Recording</h3>
-                        <p>Capturing the raw energy of music and the intimate nuance of spoken word.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Editing</h3>
-                        <p>Natural vocal tuning and timing corrections that preserve the soul of the performance.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Mixing</h3>
-                        <p>Bringing balance, depth, and emotion to your tracks. Making sure every element has its perfect place.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Mastering</h3>
-                        <p>The final touch. Consistency, loudness, and tonal balance optimized for all streaming platforms and physical media.</p>
-                    </div>
+    <div class="workflow-wrapper">
+        
+        <section class="workflow-strip bg-blush">
+            <h2>Mixing</h2>
+            <div class="workflow-container">
+                <div class="workflow-step">
+                    <h4>1. File Delivery</h4>
+                    <p>Provide your finalized, edited tracks as consolidated 24-bit/48kHz WAV stems with all limiting bypassed.</p>
                 </div>
-            </section>
-        </div>
-
-        <section id="works">
-            <h2>Works</h2>
-            <div class="works-grid">
-
-                <a href="https://open.spotify.com/album/2Be4V0PwuFPkmdJpaABr62?si=Fi6dMoa8RTWO2SiyFJ-Plw" target="_blank" class="work-item">
-                    <img src="South Side Symphony The Live Mixtape.jpg" alt="Album Art">
-                    <strong>South Side Symphony: The Live Mixtape</strong>
-                    <span class="role-tag">Recording and Mix Engineer</span>
-                </a>
-               
-                <a href="https://open.spotify.com/track/2oCcvfASJ81PNGNpdPOYwL?si=f2fc566e0b594d34" target="_blank" class="work-item">
-                    <img src="Ruby Layne & The Wicked Divine-Not Yours-Single.jpg" alt="Album Art">
-                    <strong>Not Yours</strong>
-                    <span class="role-tag">Recording Engineer, Mixing Engineer, Mastering Engineer, and Producer</span>
-                </a>
-
-                <a href="https://open.spotify.com/track/3BQt2GSMi24HgpQnmwwp39?si=91a2b27cb8254675" target="_blank" class="work-item">
-                    <img src="Masha and the Fam-Gold Guns Girls (feat. Athan Hilaki).jpg" alt="Album Art">
-                    <strong>Gold Guns Girls</strong>
-                    <span class="role-tag">Mastering Engineer</span>
-                </a>
-
-                <a href="https://open.spotify.com/track/7CfbTxLZwaCYwvLcGebMx3?si=ea198591e4434b26" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
-                    <strong>a Knack for Overthinking</strong>
-                    <span class="role-tag">Recording Engineer and Producer</span>
-                </a>
-                
-                <a href="https://open.spotify.com/track/4LrWxEW9PSZqeYfKPhsTF3?si=405695adead94059" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
-                    <strong>if you ever leave long island</strong>
-                    <span class="role-tag">Recording Engineer and Producer</span>
-                </a>
-                
-                <a href="https://open.spotify.com/track/02YZ67Q4VPzGNlSfxEL9vz?si=5aad1692ab1c4973" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
-                    <strong>He's My Man</strong>
-                    <span class="role-tag">Recording Engineer-Drums</span>
-                </a>
-
-                 <a href="https://open.spotify.com/track/78Hfzql1iYz0X9pO0hNzbf?si=5b1f6e61711d4e6f" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
-                    <strong>QUEER American DREAM</strong>
-                    <span class="role-tag">Recording Engineer-Vocals, Guitars, and Drums</span>
-                </a>
-
-                <a  href="https://open.spotify.com/track/2b2V2GcoIPF23KEGr10Zni?si=56b4abcf31d94f47" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
-                    <strong>HOWL (Protest Song)</strong>
-                    <span class="role-tag">Recording Engineer and Producer</span>
-                </a>
-
-                <a  href="https://open.spotify.com/track/5hEmsRHCuhKbDmTbwRZZ7C?si=c7b39563dc944645" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
-                    <strong>Queer Love Outlaw</strong>
-                    <span class="role-tag">Recording Engineer-Drums</span>
-                </a>
-
-                <a  href="https://open.spotify.com/track/6NMjextyIO1EN9dFLT59sd?si=f9a96124daab4c4c" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
-                    <strong>The Truth The Life The Way</strong>
-                    <span class="role-tag">Recording Engineer-Drums</span>
-                </a>
-
-                <a  href="https://open.spotify.com/track/1WAEdqLpXFWe3SvytiKlA4?si=14d40c900c254b3a" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
-                    <strong>Queers to the Front</strong>
-                    <span class="role-tag">Recording Engineer-Drums</span>
-                </a>
-    
-                <a  href="https://open.spotify.com/track/7qC1JzwRxNDvwQnJhyyOGn?si=17fb70c432044319" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
-                    <strong>Burn the Cis-Tem (This Machine Kills Transphobia)</strong>
-                    <span class="role-tag">Recording Engineer-Drums</span>
-                </a>
-
-                <a  href="https://open.spotify.com/track/2NGHjoPkiRoRKlpdFDcSTy?si=443606122b2a4131" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
-                    <strong>TFT</strong>
-                    <span class="role-tag">Recording Engineer-Drums</span>
-                </a>
-
-                <a  href="https://open.spotify.com/track/2NGHjoPkiRoRKlpdFDcSTy?si=815c07e00deb45ce" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
-                    <strong>What's With Straight Dudes Claiming They're Straight</strong>
-                    <span class="role-tag">Recording Engineer-Drums</span>
-                </a>
-
-                <a  href="https://open.spotify.com/track/6Hyj1EHWQiF4T21U6Q4fhk?si=5abbf31501014995" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
-                    <strong>Saturn Is Returning</strong>
-                    <span class="role-tag">Recording Engineer-Drums</span>
-                </a>
-
-                <a  href="https://open.spotify.com/track/3juWQG4csmURwXso3jKKXZ?si=609e1c681b0642e5" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-Hold On, Hold On You Belong.jpg" alt="Album Art">
-                    <strong>HOLD ON YOU BELONG</strong>
-                    <span class="role-tag">Recording and Mix Engineer</span>
-                </a>
-
-                <a  href="https://open.spotify.com/track/1f4HxVDgB67dz4kQddUPiI?si=16c81823780648b8" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-WE MARCH (Stronger Together).jpg" alt="Album Art">
-                    <strong>WE MARCH (Stronger Together)</strong>
-                    <span class="role-tag">Recording Engineer-Drums</span>
-                </a>
-
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <h4>2. First Pass & Review</h4>
+                    <p>I will balance, EQ, and enhance the emotion of the track, delivering the first version securely via Samply.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <h4>3. Revisions & Masters</h4>
+                    <p>We dial in the final tweaks using timestamped notes. Once approved, the high-res mix is ready for mastering.</p>
+                </div>
             </div>
         </section>
-       
-   <section id="about" style="padding: 60px 20px; margin-bottom: 6rem; text-align: center; background-color: #ffffff; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
-        <img src="Website_Photo.jpeg" alt="Kyle - KJD Productions" style="width: 160px; height: 160px; object-fit: cover; border-radius: 50%; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(0,0,0,0.04);">
-        <h2 style="color: #333333; margin-bottom: 15px;">Behind the Desk</h2>
-        <p style="max-width: 600px; margin: 0 auto; line-height: 1.6; color: #555555;">
-            Hi, I'm Kyle, the engineer behind KJD Productions. I'm here to help you achieve your sonic vision whether you need a full production or expertise along any step of the way to finishing your project! I'm here to answer questions and to help you achieve your vision! 
-        </p>
-    </section>
 
-    <section id="contact">
-        <div class="contact-box">
-            <h2>Contact</h2>
-            <form action="https://formspree.io/f/mlgwwpzz" method="POST">
-                
-                <input type="hidden" name="_next" value="https://kjdproductions.com">
-
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Name" required>
+        <section class="workflow-strip bg-white">
+            <h2>Recording</h2>
+            <div class="workflow-container">
+                <div class="workflow-step">
+                    <h4>1. Pre-Production</h4>
+                    <p>We discuss your vision, instrumentation, and sonic goals to ensure the session is prepped perfectly.</p>
                 </div>
-                
-                <div class="form-group">
-                    <input type="email" name="_replyto" placeholder="Email" required>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <h4>2. The Session</h4>
+                    <p>Focused entirely on capturing the raw energy and performance with high-fidelity microphones and preamps.</p>
                 </div>
-                <div class="form-group">
-                    <select name="service" required>
-                        <option value="" disabled selected>Select a Service...</option>
-                        <option value="Recording">Recording</option>
-                        <option value="Mixing">Mixing</option>
-                        <option value="Mastering">Mastering</option>
-                        <option value="Editing">Editing</option>
-                        <option value="Other">Other</option>
-                    </select>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <h4>3. Consolidation</h4>
+                    <p>Files are organized, comped, and securely delivered to you, ready for the editing and mixing stages.</p>
                 </div>
-                <div class="form-group">
-                    <textarea name="message" rows="4" placeholder="Message..." required></textarea>
+            </div>
+        </section>
+
+        <section class="workflow-strip bg-blush">
+            <h2>Editing</h2>
+            <div class="workflow-container">
+                <div class="workflow-step">
+                    <h4>1. Assessment</h4>
+                    <p>You provide the raw tracking sessions and rough mixes along with notes on what requires tightening.</p>
                 </div>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </section>
-</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <h4>2. Precision Edits</h4>
+                    <p>Transparent pitch correction and pocketing timing issues while preserving the natural soul of the performance.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <h4>3. Mix Ready</h4>
+                    <p>Cleaned up, crossfaded, and fully consolidated stems are sent back, ensuring a seamless mixdown process.</p>
+                </div>
+            </div>
+        </section>
 
-<footer>
-    © 2026 KJD Productions.
-</footer>
+        <section class="workflow-strip bg-white">
+            <h2>Mastering</h2>
+            <div class="workflow-container">
+                <div class="workflow-step">
+                    <h4>1. Mix Hand-off</h4>
+                    <p>Send your final mixdowns leaving plenty of headroom, ensuring no clipping on the master buss.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <h4>2. The Polish</h4>
+                    <p>Optimizing EQ, dynamics, and tonal balance so the track translates beautifully across all listening environments.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <h4>3. Final Formats</h4>
+                    <p>Delivering streaming-optimized masters (LUFS standard) alongside formats optimized for physical media if requested.</p>
+                </div>
+            </div>
+        </section>
 
-<script>
-    document.querySelector('.logo-link').addEventListener('click', function(e) {
-        e.preventDefault(); 
-        
-        // Temporarily disable CSS smooth scroll so JS can take over
-        document.documentElement.style.scrollBehavior = 'auto';
-        
-        const targetElement = document.getElementById('start-screen');
-        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 140; 
-        const startPosition = window.scrollY;
-        const distance = targetPosition - startPosition;
-        
-        // 1. LOWER DURATION: 800ms makes the whole interaction punchier
-        const duration = 800; 
-        let start = null;
+    </div>
 
-        // 2. EXPONENTIAL MATH: The fastest possible start, with a smooth landing
-        function easeOutExpo(t, b, c, d) {
-            return (t === d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
-        }
-
-        function animation(currentTime) {
-            if (start === null) start = currentTime;
-            const timeElapsed = currentTime - start;
-            
-            const run = easeOutExpo(timeElapsed, startPosition, distance, duration);
-            window.scrollTo(0, run);
-            
-            if (timeElapsed < duration) {
-                requestAnimationFrame(animation);
-            } else {
-                 // Failsafe to ensure it lands on the exact pixel
-                window.scrollTo(0, targetPosition);
-                // Turn the CSS smooth scroll back on
-                document.documentElement.style.scrollBehavior = 'smooth';
-            }
-        }
-
-        requestAnimationFrame(animation);
-    });
-</script>
+    <footer>
+        © 2026 KJD Productions.
+    </footer>
 
 </body>
 </html>
