@@ -478,7 +478,10 @@
 
 <script>
     document.querySelector('.logo-link').addEventListener('click', function(e) {
-        e.preventDefault(); // This stops the default CSS jump
+        e.preventDefault(); 
+        
+        // IMPORTANT: Temporarily disable CSS smooth scroll so JS can take over without fighting it
+        document.documentElement.style.scrollBehavior = 'auto';
         
         const targetElement = document.getElementById('start-screen');
         // This calculates the exact distance to your perfect level spot
@@ -486,7 +489,7 @@
         const startPosition = window.scrollY;
         const distance = targetPosition - startPosition;
         
-        const duration = 1000; // The total time in milliseconds (1.5 seconds)
+        const duration = 1200; // Changed to 1.2 seconds for a slightly smoother feel than 1000ms
         let start = null;
 
         // This is the math for "Ease Out Quint" - it starts fast, then severely slows down at the end
@@ -505,6 +508,11 @@
             
             if (timeElapsed < duration) {
                 requestAnimationFrame(animation);
+            } else {
+                 // IMPORTANT: Failsafe to ensure it lands on the exact pixel
+                window.scrollTo(0, targetPosition);
+                // IMPORTANT: Turn the CSS smooth scroll back on for the rest of the site to use
+                document.documentElement.style.scrollBehavior = 'smooth';
             }
         }
 
