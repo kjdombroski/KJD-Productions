@@ -480,38 +480,36 @@
     document.querySelector('.logo-link').addEventListener('click', function(e) {
         e.preventDefault(); 
         
-        // IMPORTANT: Temporarily disable CSS smooth scroll so JS can take over without fighting it
+        // Temporarily disable CSS smooth scroll so JS can take over
         document.documentElement.style.scrollBehavior = 'auto';
         
         const targetElement = document.getElementById('start-screen');
-        // This calculates the exact distance to your perfect level spot
         const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 140; 
         const startPosition = window.scrollY;
         const distance = targetPosition - startPosition;
         
-        const duration = 1200; // Changed to 1.2 seconds for a slightly smoother feel than 1000ms
+        // 1. LOWER DURATION: 800ms makes the whole interaction punchier
+        const duration = 800; 
         let start = null;
 
-        // This is the math for "Ease Out Quint" - it starts fast, then severely slows down at the end
-        function easeOutQuint(t, b, c, d) {
-            t /= d;
-            t--;
-            return c*(t*t*t*t*t + 1) + b;
+        // 2. EXPONENTIAL MATH: The fastest possible start, with a smooth landing
+        function easeOutExpo(t, b, c, d) {
+            return (t === d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
         }
 
         function animation(currentTime) {
             if (start === null) start = currentTime;
             const timeElapsed = currentTime - start;
             
-            const run = easeOutQuint(timeElapsed, startPosition, distance, duration);
+            const run = easeOutExpo(timeElapsed, startPosition, distance, duration);
             window.scrollTo(0, run);
             
             if (timeElapsed < duration) {
                 requestAnimationFrame(animation);
             } else {
-                 // IMPORTANT: Failsafe to ensure it lands on the exact pixel
+                 // Failsafe to ensure it lands on the exact pixel
                 window.scrollTo(0, targetPosition);
-                // IMPORTANT: Turn the CSS smooth scroll back on for the rest of the site to use
+                // Turn the CSS smooth scroll back on
                 document.documentElement.style.scrollBehavior = 'smooth';
             }
         }
