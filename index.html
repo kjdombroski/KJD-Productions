@@ -36,15 +36,11 @@
         html {
             scroll-padding-top: 130px;
             scroll-behavior: smooth;
-            /* FIX: Prevents elastic/bounce scroll above the page top */
-            overscroll-behavior: none;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-gray);
-            /* FIX: Belt-and-suspenders overscroll prevention */
-            overscroll-behavior: none;
         }
 
         /* NAVIGATION */
@@ -105,8 +101,6 @@
         .main-container {
             max-width: 1400px;
             margin: 0 auto;
-            /* FIX: Reduced from 160px to 130px to eliminate scrollable
-               gap above the services position, removing jitter source */
             padding: 130px 5% 50px 5%;
         }
 
@@ -617,22 +611,6 @@
                 document.documentElement.style.scrollBehavior = 'smooth';
             }, 10);
         }
-
-        // 4. SCROLL LOCK — safety net, rarely fires now that padding matches offset
-        // Uses a flag to prevent rapid-fire fighting between scroll momentum and lock
-        let isSnapping = false;
-        window.addEventListener('scroll', function() {
-            if (isSnapping) return;
-            const minScroll = getMinScroll();
-            if (window.scrollY < minScroll) {
-                isSnapping = true;
-                requestAnimationFrame(() => {
-                    document.documentElement.style.scrollBehavior = 'auto';
-                    window.scrollTo(0, minScroll);
-                    isSnapping = false;
-                });
-            }
-        }, { passive: true });
     </script>
 
 </body>
