@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KJD Productions — Professional audio engineering based in Los Angeles. Specializing in high-fidelity recording, mixing, mastering, and production.">
+
     <meta property="og:title" content="KJD Productions | Professional Audio Engineering">
     <meta property="og:description" content="Based in Los Angeles, I specialize in high-fidelity recording and mixing. Let's make your next release your best one.">
     <meta property="og:image" content="https://kjdproductions.com/KJDProductions_Site_LOGO_nowatermark.png">
@@ -11,6 +15,7 @@
     <meta name="twitter:title" content="KJD Productions | Professional Audio Engineering">
     <meta name="twitter:description" content="Professional mixing and recording services based in Los Angeles.">
     <meta name="twitter:image" content="https://kjdproductions.com/KJDProductions_Site_LOGO_nowatermark.png">
+
     <title>KJD Productions | Professional Audio</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
@@ -20,6 +25,7 @@
             --sage-contact: #AEC0AE;
             --slate: #4A4A4A;
             --white: #FFFFFF;
+            --nav-offset: 140px;
         }
 
         * {
@@ -29,8 +35,8 @@
         }
 
         html {
-            scroll-padding-top: 130px; 
-            scroll-behavior: smooth; 
+            scroll-padding-top: var(--nav-offset);
+            scroll-behavior: smooth;
         }
 
         body {
@@ -38,16 +44,16 @@
             background-color: var(--bg-gray);
         }
 
-        /* NAVIGATION - SLEEK, THIN LAYOUT */
+        /* NAVIGATION */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            height: 95px; /* THIS IS THE FIX: Forces an exact, unchangeable height */
+            height: 95px;
             display: flex;
-            justify-content: space-between; 
+            justify-content: space-between;
             align-items: center;
-            padding: 0 6%; /* Changed from 0.5rem to 0 so flexbox centers everything perfectly */
+            padding: 0 6%;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
@@ -58,18 +64,17 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            -webkit-tap-highlight-color: transparent; 
-            outline: none; 
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
         }
 
-        /* MUCH LARGER LOGO WITH TIGHT MARGINS */
         .logo-image {
-            height: 275px; 
+            height: 275px;
             width: auto;
             object-fit: contain;
-            mix-blend-mode: multiply; 
+            mix-blend-mode: multiply;
             transition: transform 0.3s ease;
-            margin: -100px 0; 
+            margin: -100px 0;
         }
 
         .logo-link:hover .logo-image {
@@ -85,15 +90,15 @@
         .nav-links a {
             text-decoration: none;
             color: var(--slate);
-            font-size: 1.2rem; 
+            font-size: 1.2rem;
             text-transform: capitalize;
-            font-weight: 600; 
+            font-weight: 600;
             transition: color 0.3s;
         }
 
         .nav-links a:hover { color: #8da38d; }
 
-        /* MAIN LAYOUT WRAPPERS */
+        /* MAIN LAYOUT */
         .main-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -107,7 +112,7 @@
             color: var(--slate);
         }
 
-        /* TOP SPLIT SECTION (HERO & SERVICES) */
+        /* TOP SPLIT (HERO & SERVICES) */
         .top-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -115,8 +120,12 @@
             margin-bottom: 6rem;
         }
 
-       #start-screen {
-            scroll-margin-top: 144px; 
+        #start-screen,
+        #services,
+        #works,
+        #about,
+        #contact {
+            scroll-margin-top: var(--nav-offset);
         }
 
         .hero-panel {
@@ -125,8 +134,7 @@
             border-radius: 20px;
             height: fit-content;
             position: sticky;
-            top: 140px; 
-            scroll-margin-top: 140px; 
+            top: var(--nav-offset);
         }
 
         .hero-panel h1 {
@@ -170,7 +178,7 @@
             font-size: 0.9rem;
             color: #666;
         }
-       
+
         /* WORKS SECTION */
         #works {
             margin-bottom: 6rem;
@@ -179,14 +187,14 @@
         .works-grid {
             display: flex;
             gap: 2.5rem;
-            overflow-x: auto; 
-            padding-bottom: 2rem; 
-            scroll-snap-type: x mandatory; 
+            overflow-x: auto;
+            padding-bottom: 2rem;
+            scroll-snap-type: x mandatory;
         }
 
         .work-item {
-            flex: 0 0 300px; 
-            scroll-snap-align: start; 
+            flex: 0 0 300px;
+            scroll-snap-align: start;
             text-align: center;
             text-decoration: none;
             color: inherit;
@@ -195,7 +203,7 @@
 
         .work-item img {
             width: 100%;
-            aspect-ratio: 1/1; 
+            aspect-ratio: 1/1;
             border-radius: 12px;
             object-fit: cover;
             box-shadow: 0 15px 35px rgba(0,0,0,0.06);
@@ -220,10 +228,41 @@
             letter-spacing: 0.5px;
         }
 
+        /* ABOUT SECTION */
+        #about {
+            padding: 60px 20px;
+            margin-bottom: 6rem;
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        #about img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+
+        #about h2 {
+            color: #333333;
+            margin-bottom: 15px;
+        }
+
+        #about p {
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #555555;
+        }
+
         /* CONTACT SECTION */
-        #contact {
+        .contact-wrapper {
             display: flex;
-            justify-content: center; 
+            justify-content: center;
         }
 
         .contact-box {
@@ -243,14 +282,13 @@
             border-radius: 8px;
             background: var(--white);
             font-family: inherit;
-            font-size: 16px; 
-            outline: none; 
+            font-size: 16px;
+            outline: none;
         }
 
-        /* Removed blue outline specifically when clicking/focusing */
         input:focus, select:focus, textarea:focus {
             outline: none;
-            box-shadow: 0 0 0 2px rgba(74, 74, 74, 0.1); 
+            box-shadow: 0 0 0 2px rgba(74, 74, 74, 0.1);
         }
 
         select {
@@ -261,7 +299,7 @@
             background-repeat: no-repeat;
             background-position: right 1.2rem center;
             background-size: 0.8rem auto;
-            padding-right: 3rem; 
+            padding-right: 3rem;
         }
 
         button {
@@ -289,7 +327,6 @@
             .top-split { grid-template-columns: 1fr; gap: 2rem; }
             .hero-panel { position: relative; top: 0; padding: 3rem 2rem; }
             .services-container { grid-template-columns: 1fr; }
-            #contact { justify-content: center; }
         }
 
         @media (max-width: 768px) {
@@ -316,6 +353,7 @@
     </nav>
 
     <div class="main-container">
+
         <div class="top-split" id="start-screen">
             <section id="hero" class="hero-panel">
                 <h1>Warmth in Every Wave.</h1>
@@ -348,226 +386,223 @@
             <h2>Works</h2>
             <div class="works-grid">
 
-                <a href="https://open.spotify.com/album/2Be4V0PwuFPkmdJpaABr62?si=Fi6dMoa8RTWO2SiyFJ-Plw" target="_blank" class="work-item">
-                    <img src="South Side Symphony The Live Mixtape.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/album/2Be4V0PwuFPkmdJpaABr62?si=Fi6dMoa8RTWO2SiyFJ-Plw" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="South Side Symphony The Live Mixtape.jpg" alt="South Side Symphony: The Live Mixtape album art">
                     <strong>South Side Symphony: The Live Mixtape</strong>
                     <span class="role-tag">Recording and Mixing Engineer</span>
                 </a>
-               
-                <a href="https://open.spotify.com/track/2oCcvfASJ81PNGNpdPOYwL?si=f2fc566e0b594d34" target="_blank" class="work-item">
-                    <img src="Ruby Layne & The Wicked Divine-Not Yours-Single.jpg" alt="Album Art">
+
+                <a href="https://open.spotify.com/track/2oCcvfASJ81PNGNpdPOYwL?si=f2fc566e0b594d34" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ruby Layne & The Wicked Divine-Not Yours-Single.jpg" alt="Not Yours single art">
                     <strong>Not Yours</strong>
                     <span class="role-tag">Recording Engineer, Mixing Engineer, Mastering Engineer, and Producer</span>
                 </a>
 
-                <a href="https://open.spotify.com/track/3BQt2GSMi24HgpQnmwwp39?si=91a2b27cb8254675" target="_blank" class="work-item">
-                    <img src="Masha and the Fam-Gold Guns Girls (feat. Athan Hilaki).jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/3BQt2GSMi24HgpQnmwwp39?si=91a2b27cb8254675" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Masha and the Fam-Gold Guns Girls (feat. Athan Hilaki).jpg" alt="Gold Guns Girls single art">
                     <strong>Gold Guns Girls</strong>
                     <span class="role-tag">Mastering Engineer</span>
                 </a>
 
-                <a href="https://open.spotify.com/track/7CfbTxLZwaCYwvLcGebMx3?si=ea198591e4434b26" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/7CfbTxLZwaCYwvLcGebMx3?si=ea198591e4434b26" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Greetings from Echo Park album art">
                     <strong>a Knack for Overthinking</strong>
                     <span class="role-tag">Recording Engineer and Producer</span>
                 </a>
-                
-                <a href="https://open.spotify.com/track/4LrWxEW9PSZqeYfKPhsTF3?si=405695adead94059" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+
+                <a href="https://open.spotify.com/track/4LrWxEW9PSZqeYfKPhsTF3?si=405695adead94059" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Greetings from Echo Park album art">
                     <strong>if you ever leave long island</strong>
                     <span class="role-tag">Recording Engineer, Mixing Engineer, and Producer</span>
                 </a>
-                
-                <a href="https://open.spotify.com/track/02YZ67Q4VPzGNlSfxEL9vz?si=5aad1692ab1c4973" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+
+                <a href="https://open.spotify.com/track/02YZ67Q4VPzGNlSfxEL9vz?si=5aad1692ab1c4973" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Greetings from Echo Park album art">
                     <strong>He's My Man</strong>
                     <span class="role-tag">Recording Engineer-Drums</span>
                 </a>
 
-                 <a href="https://open.spotify.com/track/78Hfzql1iYz0X9pO0hNzbf?si=5b1f6e61711d4e6f" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/78Hfzql1iYz0X9pO0hNzbf?si=5b1f6e61711d4e6f" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Greetings from Echo Park album art">
                     <strong>QUEER American DREAM</strong>
                     <span class="role-tag">Recording Engineer-Vocals, Guitars, and Drums</span>
                 </a>
 
-                <a  href="https://open.spotify.com/track/2b2V2GcoIPF23KEGr10Zni?si=56b4abcf31d94f47" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/2b2V2GcoIPF23KEGr10Zni?si=56b4abcf31d94f47" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Greetings from Echo Park album art">
                     <strong>HOWL (Protest Song)</strong>
                     <span class="role-tag">Recording Engineer, Mixing Engineer and Producer</span>
                 </a>
 
-                <a  href="https://open.spotify.com/track/5hEmsRHCuhKbDmTbwRZZ7C?si=c7b39563dc944645" target="_blank" class="work-item">
-                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/5hEmsRHCuhKbDmTbwRZZ7C?si=c7b39563dc944645" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata_Greetings from Echo Park.jpg" alt="Greetings from Echo Park album art">
                     <strong>Queer Love Outlaw</strong>
                     <span class="role-tag">Recording Engineer-Drums</span>
                 </a>
 
-                  <a  href="https://open.spotify.com/track/42ClFiTLsuBjqTyWLQcshB?si=3f6760ccdf27476c" target="_blank" class="work-item">
-                    <img src="Dustee Sound_On Your Skin.png" alt="Album Art">
+                <a href="https://open.spotify.com/track/42ClFiTLsuBjqTyWLQcshB?si=3f6760ccdf27476c" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Dustee Sound_On Your Skin.png" alt="On Your Skin album art">
                     <strong>On Your Skin (Undegradable)</strong>
                     <span class="role-tag">Recording Engineer, Mixing Engineer, and Producer</span>
                 </a>
 
-                <a  href="https://open.spotify.com/track/6NMjextyIO1EN9dFLT59sd?si=f9a96124daab4c4c" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/6NMjextyIO1EN9dFLT59sd?si=f9a96124daab4c4c" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="This Machine Kills Transphobia EP art">
                     <strong>The Truth The Life The Way</strong>
                     <span class="role-tag">Recording Engineer-Drums</span>
                 </a>
 
-                <a  href="https://open.spotify.com/track/1WAEdqLpXFWe3SvytiKlA4?si=14d40c900c254b3a" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/1WAEdqLpXFWe3SvytiKlA4?si=14d40c900c254b3a" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="This Machine Kills Transphobia EP art">
                     <strong>Queers to the Front</strong>
                     <span class="role-tag">Recording Engineer-Drums</span>
                 </a>
-    
-                <a  href="https://open.spotify.com/track/7qC1JzwRxNDvwQnJhyyOGn?si=17fb70c432044319" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+
+                <a href="https://open.spotify.com/track/7qC1JzwRxNDvwQnJhyyOGn?si=17fb70c432044319" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="This Machine Kills Transphobia EP art">
                     <strong>Burn the Cis-Tem (This Machine Kills Transphobia)</strong>
                     <span class="role-tag">Recording Engineer-Drums</span>
                 </a>
 
-                <a  href="https://open.spotify.com/track/2NGHjoPkiRoRKlpdFDcSTy?si=443606122b2a4131" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/2NGHjoPkiRoRKlpdFDcSTy?si=443606122b2a4131" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="This Machine Kills Transphobia EP art">
                     <strong>TFT</strong>
                     <span class="role-tag">Recording Engineer-Drums</span>
                 </a>
 
-                <a  href="https://open.spotify.com/track/4Pfl6fpx35Cghsn4H7RuLk?si=b5ca9748a20a48e2" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/4Pfl6fpx35Cghsn4H7RuLk?si=b5ca9748a20a48e2" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="This Machine Kills Transphobia EP art">
                     <strong>What's With Straight Dudes Claiming They're Straight</strong>
                     <span class="role-tag">Recording Engineer-Drums</span>
                 </a>
 
-                <a  href="https://open.spotify.com/track/6Hyj1EHWQiF4T21U6Q4fhk?si=5abbf31501014995" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/6Hyj1EHWQiF4T21U6Q4fhk?si=5abbf31501014995" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata-This Machine Kills Transphobia-EP.jpg" alt="This Machine Kills Transphobia EP art">
                     <strong>Saturn Is Returning</strong>
                     <span class="role-tag">Recording Engineer-Drums</span>
                 </a>
 
-                <a  href="https://open.spotify.com/track/3juWQG4csmURwXso3jKKXZ?si=609e1c681b0642e5" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-Hold On, Hold On You Belong.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/3juWQG4csmURwXso3jKKXZ?si=609e1c681b0642e5" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata-Hold On, Hold On You Belong.jpg" alt="Hold On You Belong single art">
                     <strong>HOLD ON YOU BELONG</strong>
                     <span class="role-tag">Recording and Mixing Engineer</span>
                 </a>
 
-                <a  href="https://open.spotify.com/track/1f4HxVDgB67dz4kQddUPiI?si=16c81823780648b8" target="_blank" class="work-item">
-                    <img src="Ryan Cassata-WE MARCH (Stronger Together).jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/1f4HxVDgB67dz4kQddUPiI?si=16c81823780648b8" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Ryan Cassata-WE MARCH (Stronger Together).jpg" alt="WE MARCH single art">
                     <strong>WE MARCH (Stronger Together)</strong>
                     <span class="role-tag">Recording Engineer-Drums</span>
                 </a>
 
-                <a  href="https://open.spotify.com/track/4Y4zYTt9aOUBmbFvYQmAGy?si=3f1e9283dbab4597" target="_blank" class="work-item">
-                    <img src="Masha_AfterDark.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/4Y4zYTt9aOUBmbFvYQmAGy?si=3f1e9283dbab4597" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Masha_AfterDark.jpg" alt="After Dark album art">
                     <strong>What I Want</strong>
                     <span class="role-tag">Songwriter, Recording Engineer, and Mixing Engineer</span>
                 </a>
 
-                <a  href="https://open.spotify.com/track/7E4CgyAYJb0VcNiAWBjR6z?si=a6077b208526450c" target="_blank" class="work-item">
-                    <img src="Masha_AfterDark.jpg" alt="Album Art">
+                <a href="https://open.spotify.com/track/7E4CgyAYJb0VcNiAWBjR6z?si=a6077b208526450c" target="_blank" rel="noopener noreferrer" class="work-item">
+                    <img src="Masha_AfterDark.jpg" alt="After Dark album art">
                     <strong>2 Am</strong>
                     <span class="role-tag">Recording and Mixing Engineer</span>
                 </a>
 
             </div>
         </section>
-       
-   <section id="about" style="padding: 60px 20px; margin-bottom: 6rem; text-align: center; background-color: #ffffff; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
-        <img src="Website_Photo.jpeg" alt="Kyle - KJD Productions" style="width: 160px; height: 160px; object-fit: cover; border-radius: 50%; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(0,0,0,0.04);">
-        <h2 style="color: #333333; margin-bottom: 15px;">Behind the Desk</h2>
-        <p style="max-width: 600px; margin: 0 auto; line-height: 1.6; color: #555555;">
-            Hi, I'm Kyle, the engineer behind KJD Productions. I'm here to help you achieve your sonic vision whether you need a full production or expertise along any step of the way to finishing your project! I'm here to answer questions and to help you achieve your vision! 
-        </p>
-    </section>
 
-    <section id="contact">
-        <div class="contact-box">
-            <h2>Contact</h2>
-            <form action="https://formspree.io/f/mlgwwpzz" method="POST">
-                
-                <input type="hidden" name="_next" value="https://kjdproductions.com">
+        <section id="about">
+            <img src="Website_Photo.jpeg" alt="Kyle - KJD Productions">
+            <h2>Behind the Desk</h2>
+            <p>
+                Hi, I'm Kyle, the engineer behind KJD Productions. I'm here to help you achieve your sonic vision whether you need a full production or expertise along any step of the way to finishing your project! I'm here to answer questions and to help you achieve your vision!
+            </p>
+        </section>
 
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Name" required>
+        <section id="contact">
+            <div class="contact-wrapper">
+                <div class="contact-box">
+                    <h2>Contact</h2>
+                    <form action="https://formspree.io/f/mlgwwpzz" method="POST">
+                        <input type="hidden" name="_next" value="https://kjdproductions.com">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="_replyto" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="service" required>
+                                <option value="" disabled selected>Select a Service...</option>
+                                <option value="Recording">Recording</option>
+                                <option value="Mixing">Mixing</option>
+                                <option value="Mastering">Mastering</option>
+                                <option value="Production">Production</option>
+                                <option value="Editing">Editing</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="4" placeholder="Message..." required></textarea>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>
-                
-                <div class="form-group">
-                    <input type="email" name="_replyto" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <select name="service" required>
-                        <option value="" disabled selected>Select a Service...</option>
-                        <option value="Recording">Recording</option>
-                        <option value="Mixing">Mixing</option>
-                        <option value="Mastering">Mastering</option>
-                        <option value="Production">Production</option>
-                        <option value="Editing">Editing</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" rows="4" placeholder="Message..." required></textarea>
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </section>
-</div>
+            </div>
+        </section>
 
-<footer>
-    © 2026 KJD Productions.
-</footer>
+    </div>
 
-<script>
-    // 1. IMMEDIATE JUMP ON PAGE LOAD (FIX FOR GUIDE -> CONTACT)
-    if (window.location.hash) {
-        // Temporarily disable smooth scroll to allow an instant jump
-        document.documentElement.style.scrollBehavior = 'auto';
-        
-        const hash = window.location.hash;
-        const target = document.querySelector(hash);
-        if (target) {
-            const offsetPosition = target.getBoundingClientRect().top + window.scrollY - 140;
-            window.scrollTo(0, offsetPosition);
-        }
-        
-        // Re-enable smooth scroll for future on-page clicks
-        setTimeout(() => {
-            document.documentElement.style.scrollBehavior = 'smooth';
-        }, 10);
-    }
+    <footer>
+        © 2026 KJD Productions.
+    </footer>
 
-    // 2. LOGO LINK SMART SCROLL
-    document.querySelector('.logo-link').addEventListener('click', function(e) {
-        if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
-            e.preventDefault(); 
+    <script>
+        const NAV_OFFSET = 140;
+
+        // 1. IMMEDIATE JUMP ON PAGE LOAD (FIX FOR GUIDE -> CONTACT)
+        if (window.location.hash) {
             document.documentElement.style.scrollBehavior = 'auto';
-            const targetElement = document.getElementById('start-screen');
-            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 140; 
-            const startPosition = window.scrollY;
-            const distance = targetPosition - startPosition;
-            const duration = 800; 
-            let start = null;
-
-            function easeOutExpo(t, b, c, d) {
-                return (t === d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                const offsetPosition = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+                window.scrollTo(0, offsetPosition);
             }
-
-            function animation(currentTime) {
-                if (start === null) start = currentTime;
-                const timeElapsed = currentTime - start;
-                const run = easeOutExpo(timeElapsed, startPosition, distance, duration);
-                window.scrollTo(0, run);
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(animation);
-                } else {
-                    window.scrollTo(0, targetPosition);
-                    document.documentElement.style.scrollBehavior = 'smooth';
-                }
-            }
-            requestAnimationFrame(animation);
+            setTimeout(() => {
+                document.documentElement.style.scrollBehavior = 'smooth';
+            }, 10);
         }
-    });
-</script>
+
+        // 2. LOGO LINK SMART SCROLL
+        document.querySelector('.logo-link').addEventListener('click', function(e) {
+            if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
+                e.preventDefault();
+                document.documentElement.style.scrollBehavior = 'auto';
+                const targetElement = document.getElementById('start-screen');
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+                const startPosition = window.scrollY;
+                const distance = targetPosition - startPosition;
+                const duration = 800;
+                let start = null;
+
+                function easeOutExpo(t, b, c, d) {
+                    return (t === d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
+                }
+
+                function animation(currentTime) {
+                    if (start === null) start = currentTime;
+                    const timeElapsed = currentTime - start;
+                    const run = easeOutExpo(timeElapsed, startPosition, distance, duration);
+                    window.scrollTo(0, run);
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    } else {
+                        window.scrollTo(0, targetPosition);
+                        document.documentElement.style.scrollBehavior = 'smooth';
+                    }
+                }
+                requestAnimationFrame(animation);
+            }
+        });
+    </script>
 
 </body>
 </html>
