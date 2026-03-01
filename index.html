@@ -552,6 +552,12 @@
     </footer>
 
     <script>
+        // Compute and lock the minimum scroll position to the services starting point
+        function getMinScroll() {
+            const services = document.getElementById('services');
+            return services.getBoundingClientRect().top + window.scrollY - 130;
+        }
+
         // 1. IMMEDIATE JUMP ON PAGE LOAD (FIX FOR GUIDE -> CONTACT)
         if (window.location.hash) {
             document.documentElement.style.scrollBehavior = 'auto';
@@ -571,8 +577,7 @@
             if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
                 e.preventDefault();
                 document.documentElement.style.scrollBehavior = 'auto';
-                const targetElement = document.getElementById('services');
-                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 130;
+                const targetPosition = getMinScroll();
                 const startPosition = window.scrollY;
                 const distance = targetPosition - startPosition;
                 const duration = 800;
@@ -601,13 +606,19 @@
         // 3. SET INITIAL PAGE POSITION ON LOAD — matches Services nav tab position
         if (!window.location.hash) {
             document.documentElement.style.scrollBehavior = 'auto';
-            const targetElement = document.getElementById('services');
-            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 130;
-            window.scrollTo(0, targetPosition);
+            window.scrollTo(0, getMinScroll());
             setTimeout(() => {
                 document.documentElement.style.scrollBehavior = 'smooth';
             }, 10);
         }
+
+        // 4. SCROLL LOCK — prevents scrolling above the services starting position
+        window.addEventListener('scroll', function() {
+            const minScroll = getMinScroll();
+            if (window.scrollY < minScroll) {
+                window.scrollTo(0, minScroll);
+            }
+        });
     </script>
 
 </body>
