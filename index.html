@@ -120,7 +120,7 @@
         }
 
         #start-screen {
-            scroll-margin-top: 144px;
+            scroll-margin-top: 130px;
         }
 
         .hero-panel {
@@ -129,8 +129,8 @@
             border-radius: 20px;
             height: fit-content;
             position: sticky;
-            top: 140px;
-            scroll-margin-top: 140px;
+            top: 130px;
+            scroll-margin-top: 130px;
         }
 
         .hero-panel h1 {
@@ -558,7 +558,7 @@
             const hash = window.location.hash;
             const target = document.querySelector(hash);
             if (target) {
-                const offsetPosition = target.getBoundingClientRect().top + window.scrollY - 140;
+                const offsetPosition = target.getBoundingClientRect().top + window.scrollY - 130;
                 window.scrollTo(0, offsetPosition);
             }
             setTimeout(() => {
@@ -566,13 +566,13 @@
             }, 10);
         }
 
-        // 2. LOGO LINK SMART SCROLL
+        // 2. LOGO LINK SMART SCROLL — matches Services nav tab position
         document.querySelector('.logo-link').addEventListener('click', function(e) {
             if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
                 e.preventDefault();
                 document.documentElement.style.scrollBehavior = 'auto';
-                const targetElement = document.getElementById('start-screen');
-                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 140;
+                const targetElement = document.getElementById('services');
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 130;
                 const startPosition = window.scrollY;
                 const distance = targetPosition - startPosition;
                 const duration = 800;
@@ -597,6 +597,17 @@
                 requestAnimationFrame(animation);
             }
         });
+
+        // 3. SET INITIAL PAGE POSITION ON LOAD — matches Services nav tab position
+        if (!window.location.hash) {
+            document.documentElement.style.scrollBehavior = 'auto';
+            const targetElement = document.getElementById('services');
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 130;
+            window.scrollTo(0, targetPosition);
+            setTimeout(() => {
+                document.documentElement.style.scrollBehavior = 'smooth';
+            }, 10);
+        }
     </script>
 
 </body>
