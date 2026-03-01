@@ -100,35 +100,18 @@
         /* HAMBURGER BUTTON — hidden on desktop */
         .hamburger {
             display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 26px;
-            height: 18px;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
             cursor: pointer;
             background: none;
             border: none;
             padding: 0;
             z-index: 1100;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: var(--slate);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        /* Hamburger open state */
-        .hamburger.open span:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-        .hamburger.open span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.open span:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
+            font-size: 1.6rem;
+            color: var(--slate);
+            line-height: 1;
         }
 
         /* MOBILE DROPDOWN MENU */
@@ -399,12 +382,10 @@
         }
 
         @media (max-width: 768px) {
-            /* Hide desktop nav links, show hamburger */
             .nav-links { display: none; }
             .hamburger { display: flex; }
             nav { padding: 1rem 5%; }
             .logo-image { height: 140px; margin: -40px 0; }
-            /* Mobile starts naturally at top of page */
             .main-container { padding-top: 95px; }
         }
     </style>
@@ -422,15 +403,9 @@
             <li><a href="client-guide.html">Guide</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
-        <!-- Hamburger button — mobile only -->
-        <button class="hamburger" id="hamburger" aria-label="Open menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">&#9776;</button>
     </nav>
 
-    <!-- Mobile dropdown menu -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="index.html#services" class="mobile-nav-link">Services</a>
         <a href="index.html#works" class="mobile-nav-link">Works</a>
@@ -652,6 +627,7 @@
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('open');
             mobileMenu.classList.toggle('open');
+            hamburger.innerHTML = hamburger.classList.contains('open') ? '&#10005;' : '&#9776;';
         });
 
         // Close mobile menu when a link is tapped
@@ -659,6 +635,7 @@
             link.addEventListener('click', () => {
                 hamburger.classList.remove('open');
                 mobileMenu.classList.remove('open');
+                hamburger.innerHTML = '&#9776;';
             });
         });
 
@@ -715,8 +692,7 @@
             }
         });
 
-        // 3. SET INITIAL PAGE POSITION ON LOAD
-        // Desktop only — mobile starts naturally at top
+        // 3. SET INITIAL PAGE POSITION ON LOAD — desktop only
         if (!window.location.hash && !isMobile()) {
             document.documentElement.style.scrollBehavior = 'auto';
             window.scrollTo(0, getMinScroll());
