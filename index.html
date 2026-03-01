@@ -97,6 +97,79 @@
 
         .nav-links a:hover { color: #8da38d; }
 
+        /* HAMBURGER BUTTON — hidden on desktop */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 26px;
+            height: 18px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--slate);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hamburger open state */
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* MOBILE DROPDOWN MENU */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 95px;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--slate);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            padding: 0.9rem 6%;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            transition: color 0.3s, background 0.3s;
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a:hover {
+            color: #8da38d;
+            background: rgba(0,0,0,0.02);
+        }
+
         /* MAIN LAYOUT */
         .main-container {
             max-width: 1400px;
@@ -326,10 +399,13 @@
         }
 
         @media (max-width: 768px) {
+            /* Hide desktop nav links, show hamburger */
             .nav-links { display: none; }
+            .hamburger { display: flex; }
             nav { padding: 1rem 5%; }
             .logo-image { height: 140px; margin: -40px 0; }
-            .main-container { padding-top: 120px; }
+            /* Mobile starts naturally at top of page */
+            .main-container { padding-top: 95px; }
         }
     </style>
 </head>
@@ -346,7 +422,22 @@
             <li><a href="client-guide.html">Guide</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
+        <!-- Hamburger button — mobile only -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+
+    <!-- Mobile dropdown menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#services" class="mobile-nav-link">Services</a>
+        <a href="index.html#works" class="mobile-nav-link">Works</a>
+        <a href="index.html#about" class="mobile-nav-link">About</a>
+        <a href="client-guide.html" class="mobile-nav-link">Guide</a>
+        <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+    </div>
 
     <div class="main-container">
 
@@ -552,6 +643,25 @@
     </footer>
 
     <script>
+        const isMobile = () => window.innerWidth <= 768;
+
+        // HAMBURGER MENU TOGGLE
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Close mobile menu when a link is tapped
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
         // Compute the minimum scroll position — top of services section
         function getMinScroll() {
             const services = document.getElementById('services');
@@ -572,39 +682,42 @@
             }, 10);
         }
 
-        // 2. LOGO LINK SMART SCROLL — matches Services nav tab position
+        // 2. LOGO LINK SMART SCROLL — desktop only
         document.querySelector('.logo-link').addEventListener('click', function(e) {
             if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
-                e.preventDefault();
-                document.documentElement.style.scrollBehavior = 'auto';
-                const targetPosition = getMinScroll();
-                const startPosition = window.scrollY;
-                const distance = targetPosition - startPosition;
-                const duration = 800;
-                let start = null;
+                if (!isMobile()) {
+                    e.preventDefault();
+                    document.documentElement.style.scrollBehavior = 'auto';
+                    const targetPosition = getMinScroll();
+                    const startPosition = window.scrollY;
+                    const distance = targetPosition - startPosition;
+                    const duration = 800;
+                    let start = null;
 
-                function easeOutExpo(t, b, c, d) {
-                    return (t === d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
-                }
-
-                function animation(currentTime) {
-                    if (start === null) start = currentTime;
-                    const timeElapsed = currentTime - start;
-                    const run = easeOutExpo(timeElapsed, startPosition, distance, duration);
-                    window.scrollTo(0, run);
-                    if (timeElapsed < duration) {
-                        requestAnimationFrame(animation);
-                    } else {
-                        window.scrollTo(0, targetPosition);
-                        document.documentElement.style.scrollBehavior = 'smooth';
+                    function easeOutExpo(t, b, c, d) {
+                        return (t === d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
                     }
+
+                    function animation(currentTime) {
+                        if (start === null) start = currentTime;
+                        const timeElapsed = currentTime - start;
+                        const run = easeOutExpo(timeElapsed, startPosition, distance, duration);
+                        window.scrollTo(0, run);
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        } else {
+                            window.scrollTo(0, targetPosition);
+                            document.documentElement.style.scrollBehavior = 'smooth';
+                        }
+                    }
+                    requestAnimationFrame(animation);
                 }
-                requestAnimationFrame(animation);
             }
         });
 
-        // 3. SET INITIAL PAGE POSITION ON LOAD — matches Services nav tab position
-        if (!window.location.hash) {
+        // 3. SET INITIAL PAGE POSITION ON LOAD
+        // Desktop only — mobile starts naturally at top
+        if (!window.location.hash && !isMobile()) {
             document.documentElement.style.scrollBehavior = 'auto';
             window.scrollTo(0, getMinScroll());
             setTimeout(() => {
