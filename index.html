@@ -25,7 +25,6 @@
             --sage-contact: #AEC0AE;
             --slate: #4A4A4A;
             --white: #FFFFFF;
-            --nav-offset: 140px;
         }
 
         * {
@@ -35,7 +34,7 @@
         }
 
         html {
-            scroll-padding-top: var(--nav-offset);
+            scroll-padding-top: 130px;
             scroll-behavior: smooth;
         }
 
@@ -120,12 +119,8 @@
             margin-bottom: 6rem;
         }
 
-        #start-screen,
-        #services,
-        #works,
-        #about,
-        #contact {
-            scroll-margin-top: var(--nav-offset);
+        #start-screen {
+            scroll-margin-top: 144px;
         }
 
         .hero-panel {
@@ -134,7 +129,8 @@
             border-radius: 20px;
             height: fit-content;
             position: sticky;
-            top: var(--nav-offset);
+            top: 140px;
+            scroll-margin-top: 140px;
         }
 
         .hero-panel h1 {
@@ -556,14 +552,13 @@
     </footer>
 
     <script>
-        const NAV_OFFSET = 140;
-
         // 1. IMMEDIATE JUMP ON PAGE LOAD (FIX FOR GUIDE -> CONTACT)
         if (window.location.hash) {
             document.documentElement.style.scrollBehavior = 'auto';
-            const target = document.querySelector(window.location.hash);
+            const hash = window.location.hash;
+            const target = document.querySelector(hash);
             if (target) {
-                const offsetPosition = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+                const offsetPosition = target.getBoundingClientRect().top + window.scrollY - 140;
                 window.scrollTo(0, offsetPosition);
             }
             setTimeout(() => {
@@ -577,7 +572,7 @@
                 e.preventDefault();
                 document.documentElement.style.scrollBehavior = 'auto';
                 const targetElement = document.getElementById('start-screen');
-                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 140;
                 const startPosition = window.scrollY;
                 const distance = targetPosition - startPosition;
                 const duration = 800;
